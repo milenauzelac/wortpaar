@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Wortpaar – Permutation</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      font-family: "Suisse BP Int'l", Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0 10vw;
+      box-sizing: border-box;
+    }
+
+    .wort {
+      font-size: 5em;
+      width: 40%;
+      text-align: center;
+    }
+
+    #links {
+      text-align: right;
+    }
+
+    #rechts {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<div id="links" class="wort">WORT</div>
+<div id="rechts" class="wort">WORT</div>
+
+<script>
+const woerter = [
+  "AKTION", "AKT", "BANK", "BIOTIN", "BISS", "BOOT", "CANVAS",
+  "CASANOVA", "CASINO", "IKON", "INSTINKT", "KANON", "KINO",
+  "KIOSK", "KITA", "KNAST", "KONTAKT", "KOST", "NANO", "NATION",
+  "NIKOTIN", "OKTAV", "SOS", "STAB", "STATION", "STOCK",
+  "TABAK", "TAKTIK", "TAT", "TOAST", "VATIKAN"
+];
+
+const linksEl = document.getElementById("links");
+const rechtsEl = document.getElementById("rechts");
+
+function neueWortkombination() {
+  let index1 = Math.floor(Math.random() * woerter.length);
+  let index2;
+  do {
+    index2 = Math.floor(Math.random() * woerter.length);
+  } while (index1 === index2); // keine Dopplung
+
+  linksEl.textContent = woerter[index1];
+  rechtsEl.textContent = woerter[index2];
+}
+
+// Startanzeige + Wiederholung im 1-Sekunden-Takt
+neueWortkombination();
+setInterval(neueWortkombination, 1000);
+</script>
+
+</body>
+</html>
